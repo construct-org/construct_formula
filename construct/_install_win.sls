@@ -2,6 +2,7 @@
 
 {% set install_dir = construct.install_dir %}
 {% set latest_dir = construct.install_dir + "\\latest" %}
+{% set bin_dir  = construct.install_dir + '\\bin' %}
 {% set env_dir = construct.install_dir + "\\" + construct.version %}
 {% set py_exe = construct.python_exe %}
 {% set config = construct.config %}
@@ -33,7 +34,7 @@ Ensure Virtualenv Exists:
 
 Ensure Construct Bin Directory Exists:
   file.directory:
-    - name: {{ env_dir }}/bin
+    - name: {{ bin_dir }}
 
 
 Link latest Virtualenv:
@@ -53,7 +54,7 @@ Set Environment Variables:
   cmd.run:
     - names:
       - SETX /M CONSTRUCT_CONFIG "{{ config }}"
-      - SETX /M CONSTRUCT_LATEST "{{ latest_dir }}\bin"
+      - SETX /M CONSTRUCT_LATEST "{{ bin_dir }}"
   win_path.exists:
     - name: "%CONSTRUCT_LATEST%"
     - index: 1
@@ -78,7 +79,7 @@ Install fsfs to Global Site:
 
 Construct CLI cmd:
   file.managed:
-    - name: {{ env_dir }}\bin\construct.bat
+    - name: {{ bin_dir }}\construct.bat
     - source: salt://construct/files/construct.bat
     - replace: True
     - template: jinja
@@ -88,7 +89,7 @@ Construct CLI cmd:
 
 Construct CLI powershell:
   file.managed:
-    - name: {{ env_dir }}\bin\construct.ps1
+    - name: {{ bin_dir }}\construct.ps1
     - source: salt://construct/files/construct.ps1
     - replace: True
     - template: jinja
@@ -98,7 +99,7 @@ Construct CLI powershell:
 
 Construct CLI cmd - Alias:
   file.managed:
-    - name: {{ env_dir }}\bin\cons.bat
+    - name: {{ bin_dir }}\cons.bat
     - source: salt://construct/files/construct.bat
     - replace: True
     - template: jinja
@@ -108,7 +109,7 @@ Construct CLI cmd - Alias:
 
 Construct CLI powershell - Alias:
   file.managed:
-    - name: {{ env_dir }}\bin\cons.ps1
+    - name: {{ bin_dir }}\cons.ps1
     - source: salt://construct/files/construct.ps1
     - replace: True
     - template: jinja
