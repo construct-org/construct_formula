@@ -46,18 +46,20 @@ Link latest Virtualenv:
 Unset Construct latest bin PATH:
   win_path.absent:
     - names:
-      - '%CONSTRUCT_LATEST%'
-      - {{ latest_dir }}
+      - '%construct_latest%'
+      - '%CONSTRUCT_BIN%'
+      - '{{ latest_dir }}'
+      - '{{ bin_dir }}'
 
 
 Set Environment Variables:
   cmd.run:
     - names:
       - SETX /M CONSTRUCT_CONFIG "{{ config }}"
-      - SETX /M CONSTRUCT_LATEST "{{ bin_dir }}"
+      - SETX /M CONSTRUCT_BIN "{{ bin_dir }}"
   win_path.exists:
-    - name: "%CONSTRUCT_LATEST%"
-    - index: 1
+    - name: {{ bin_dir }}
+    - index: 0
   module.run:
     - name: win_path.rehash
 
