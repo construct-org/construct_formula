@@ -84,7 +84,7 @@ Construct CLI cmd:
     - replace: True
     - template: jinja
     - defaults:
-        env_dir: {{ env_dir }}
+        latest_dir: {{ latest_dir }}
 
 
 Construct CLI powershell:
@@ -94,7 +94,7 @@ Construct CLI powershell:
     - replace: True
     - template: jinja
     - defaults:
-        env_dir: {{ env_dir }}
+        latest_dir: {{ latest_dir }}
 
 
 Construct CLI cmd - Alias:
@@ -104,7 +104,7 @@ Construct CLI cmd - Alias:
     - replace: True
     - template: jinja
     - defaults:
-        env_dir: {{ env_dir }}
+        latest_dir: {{ latest_dir }}
 
 
 Construct CLI powershell - Alias:
@@ -114,4 +114,4 @@ Construct CLI powershell - Alias:
     - replace: True
     - template: jinja
     - defaults:
-        env_dir: {{ env_dir }}
+        latest_dir: {{ latest_dir }}
