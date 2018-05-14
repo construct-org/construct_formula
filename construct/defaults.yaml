@@ -1,0 +1,8 @@
+construct:
+  version: 0.1.19
+  pip_install: git+git://github.com/construct-org/construct_setup.git
+
+  # The following defaults are set in map.jinja in the os_defaults map
+  config: ''
+  python_exe: ''
+  install_dir: ''

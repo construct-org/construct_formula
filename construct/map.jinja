@@ -1,0 +1,31 @@
+{% import_yaml "construct/defaults.yaml" as defaults %}
+
+{% set os_defaults = salt['grains.filter_by']({
+  'Windows': {
+    'config': '~\.construct\construct.yaml'
+    'python_exe': 'python'
+    'install_dir': 'C:\construct'
+  },
+  'MacOS': {
+    'config': '~/.construct/construct.yaml',
+    'python_exe': '/usr/bin/python',
+    'install_dir': '/Library/Frameworks/Construct',
+  },
+  'DEFAULT': {
+    'config': '~/.construct/construct.yaml',
+    'python_exe': '/usr/bin/python',
+    'install_dir': '/usr/local/construct',
+  }
+}, grain='os_family', default='DEFAULT')
+%}
+
+{## Merge os_family settings into default settings ##}
+{% do defaults.construct.update(os_defaults)}
+
+{## Merge pillars with defaults ##}
+{% set construct = salt['pillar.get'](
+  'construct',
+  default=defaults.construct,
+  merge=True
+)
+%}

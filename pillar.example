@@ -1,0 +1,47 @@
+# ======
+# Simple
+# ======
+# When you're only manging a single platform via salt your pillars can be
+# as simple as the following:
+
+construct:
+    # Path to the construct_setup git repo
+    pip_install: git+git://github.com/construct-org/construct_setup.git
+
+    # The version of Construct to install - tag or branch of git repo
+    version: '0.1.19'
+
+    # Path to construct yaml configuration file
+    config: 'C:\construct\construct.yaml'
+
+    # Python executable used to create construct virtualenv
+    python_exe: 'C:\python27\python.exe'
+
+    # Root directory of construct installs
+    install_dir: 'C:\construct'
+
+
+# ==============
+# Multi-platform
+# ==============
+# If you're managing multiple platforms you'll want to provide different values
+# per-platform. Below we check the os via grains, but, you can customize this
+# using roles or groups if needed.
+
+construct:
+    pip_install: git+git://github.com/construct-org/construct_setup.git
+    version: '0.1.19'
+
+{% if grains['os'] == 'Windows' %}
+    config: '~\.construct\construct.yaml'
+    python_exe: 'C:\python27\python.exe'
+    install_dir: 'C:\construct'
+{% elif grains['os'] == 'MacOS' %}
+    config: '~/.construct/construct.yaml'
+    python_exe: '/usr/bin/python'
+    install_dir: '/Library/Frameworks/Construct'
+{% else %}
+    config: '~/.construct/construct.yaml'
+    python_exe: '/usr/bin/python'
+    install_dir: '/usr/local/construct'
+{% endif %}
