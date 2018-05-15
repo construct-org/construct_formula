@@ -50,3 +50,11 @@ Pillars
 
         # Optional: Root directory of construct installs
         install_dir: 'C:\\construct'
+
+
+Installing a specific version of Construct
+==========================================
+
+.. code-block:: console
+
+    > salt '\*' state.apply construct.install pillar='{"construct":{"version": "0.1.19"}}'
