@@ -9,7 +9,7 @@ construct:
     pip_install: git+git://github.com/construct-org/construct_setup.git
 
     # The version of Construct to install - tag or branch of git repo
-    version: '0.1.19'
+    version: '0.1.21'
 
     # Path to construct yaml configuration file
     config: 'C:\construct\construct.yaml'
@@ -30,7 +30,7 @@ construct:
 
 construct:
     pip_install: git+git://github.com/construct-org/construct_setup.git
-    version: '0.1.19'
+    version: '0.1.21'
 
 {% if grains['os'] == 'Windows' %}
     config: '~\.construct\construct.yaml'
