@@ -67,16 +67,8 @@ Set Environment Variables:
 Ensure Construct Installed:
   pip.installed:
     - ignore_installed: True
-    - process_dependency_links: True
-    - trusted_host: github.com
     - name: {{ pip_install }}
     - bin_env: {{ env_dir }}
-
-
-Install fsfs to Global Site:
-  pip.installed:
-    - name: fsfs
-    - upgrade: True
 
 
 Construct CLI cmd:
