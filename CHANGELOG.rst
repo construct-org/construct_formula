@@ -2,6 +2,12 @@
 Construct formula
 =================
 
+0.1.0 (2019-08-13)
+
+- Add uninstall.sls
+- Rewrite install.sls to use construct_setup/install.py
+- Remove files
+
 0.0.4 (2019-04-08)
 
 - Remove process-dependency-links from pip.installed

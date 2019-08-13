@@ -1,15 +1,15 @@
 # ======
 # Simple
 # ======
-# When you're only manging a single platform via salt your pillars can be
-# as simple as the following:
+# When you're only managing a single platform via salt your pillars can be
+# as simple as:
 
 construct:
     # Path to the construct_setup git repo
-    pip_install: git+git://github.com/construct-org/construct_setup.git
+    git_repo: https://github.com/construct-org/construct_setup
 
     # The version of Construct to install - tag or branch of git repo
-    version: '0.1.21'
+    version: '0.1.24'
 
     # Path to construct yaml configuration file
     config: 'C:\construct\construct.yaml'
@@ -29,8 +29,8 @@ construct:
 # using roles or groups if needed.
 
 construct:
-    pip_install: git+git://github.com/construct-org/construct_setup.git
-    version: '0.1.21'
+    git_repo: https://github.com/construct-org/construct_setup
+    version: '0.1.24'
 
 {% if grains['os'] == 'Windows' %}
     config: '~\.construct\construct.yaml'
@@ -39,9 +39,9 @@ construct:
 {% elif grains['os'] == 'MacOS' %}
     config: '~/.construct/construct.yaml'
     python_exe: '/usr/bin/python'
-    install_dir: '/Library/Frameworks/Construct'
+    install_dir: '/opt/construct'
 {% else %}
     config: '~/.construct/construct.yaml'
     python_exe: '/usr/bin/python'
-    install_dir: '/usr/local/construct'
+    install_dir: '/opt/construct'
 {% endif %}

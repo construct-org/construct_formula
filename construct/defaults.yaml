@@ -1,6 +1,6 @@
 construct:
-  version: 0.1.22
-  pip_install: git+git://github.com/construct-org/construct_setup.git
+  version: -1
+  git_repo: https://github.com/construct-org/construct_setup
 
   # The following defaults are set in map.jinja in the os_defaults map
   config: ''

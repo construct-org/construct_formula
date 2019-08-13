@@ -20,6 +20,10 @@ Installs and configures Construct based on pillars.
 ---------------------
 Same as ``construct``.
 
+``construct.uninstall``
+---------------------
+Completely remove Construct.
+
 ``construct.uninstall_global``
 ------------------------------
 Ensures construct is not installed in your global python site-packages.
@@ -33,10 +37,10 @@ Pillars
     construct:
         # Path to the construct_setup git repo
         # You should not need to override this.
-        pip_install: git+git://github.com/construct-org/construct_setup.git
+        git_repo: https://github.com/construct-org/construct_setup
 
         # The version of Construct to install - tag or branch of git repo
-        version: '0.1.19'
+        version: '0.1.24'
 
         # Path to construct yaml configuration file
         # You probably want to set this to a shared network config
@@ -54,4 +58,4 @@ Installing a specific version of Construct
 
 .. code-block:: console
 
-    > salt '\*' state.apply construct.install pillar='{"construct":{"version": "0.1.19"}}'
+    > salt '\*' state.apply construct.install pillar='{"construct":{"version": "0.1.23"}}'

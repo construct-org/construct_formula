@@ -1,9 +1,30 @@
+{% from "construct/map.jinja" import construct with context %}
 
-include:
+{% set install_dir = construct.install_dir %}
+{% set py_exe = construct.python_exe %}
+{% set config = construct.config %}
+{% set version = construct.version %}
+{% set git_repo = construct.git_repo %}
+{% set construct_setup = salt.temp.dir() %}
+{% extra_opts = "" %}
+{% if version != -1 %}
+  {% set extra_opts = '--version=version' %}
+{% endif %}
+
+
+Download construct_setup:
+  git.cloned:
+    - name: {{ git_repo }}
+    - target: {{ construct_setup }}
+
+
+Install construct:
 {% if grains['os'] == 'Windows' %}
-  - construct._install_win
-{% elif grains['os'] == 'MacOS' %}
-  - construct._install_mac
+  cmd.run:
+    - name: python install.py --where={{ install_dir }} --python={{ py_exe }} {{ extra_opts }}
+    - cwd: {{ construct_setup }}
 {% else %}
-  - construct._install_linux
+  cmd.run:
+    - name: install.py --where={{ install_dir }} --python={{ py_exe }} {{ extra_opts }}
+    - cwd: {{ construct_setup }}
 {% endif %}
