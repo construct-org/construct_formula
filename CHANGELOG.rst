@@ -7,6 +7,7 @@ Construct formula
 - Add uninstall.sls
 - Rewrite install.sls to use construct_setup/install.py
 - Remove files
+- Gotta set environment variables for windows using cmd.run
 
 0.0.4 (2019-04-08)
 
