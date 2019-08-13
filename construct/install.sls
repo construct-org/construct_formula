@@ -13,10 +13,8 @@
 
 
 Download construct_setup:
-  git.cloned:
-    - name: {{ git_repo }}
-    - target: {{ construct_setup }}
-
+  cmd.run:
+    - name: git clone {{ git_repo }} {{ construct_setup }}
 
 Install construct:
 {% if grains['os'] == 'Windows' %}
@@ -28,3 +26,8 @@ Install construct:
     - name: install.py --where={{ install_dir }} --python={{ py_exe }} {{ extra_opts }}
     - cwd: {{ construct_setup }}
 {% endif %}
+
+
+Remove construct_setup:
+  file.absent:
+    - name: {{ construct_setup }}
