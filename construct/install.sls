@@ -6,7 +6,7 @@
 {% set version = construct.version %}
 {% set git_repo = construct.git_repo %}
 {% set construct_setup = salt.temp.dir() %}
-{% extra_opts = "" %}
+{% set extra_opts = "" %}
 {% if version != -1 %}
   {% set extra_opts = '--version=version' %}
 {% endif %}
