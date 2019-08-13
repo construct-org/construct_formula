@@ -21,10 +21,12 @@ Install construct:
   cmd.run:
     - name: python install.py --where={{ install_dir }} --python={{ py_exe }} {{ extra_opts }}
     - cwd: {{ construct_setup }}
+    - stdin: 'y'
 {% else %}
   cmd.run:
     - name: install.py --where={{ install_dir }} --python={{ py_exe }} {{ extra_opts }}
     - cwd: {{ construct_setup }}
+    - stdin: 'y'
 {% endif %}
 
 
