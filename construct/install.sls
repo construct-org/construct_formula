@@ -19,15 +19,10 @@ Download construct_setup:
 Install construct:
 {% if grains['os'] == 'Windows' %}
   cmd.run:
-    - name: python install.py --where={{ install_dir }} --python={{ py_exe }} {{ extra_opts }} --ignore-prompts
+    - name: python install.py  --ignore-prompts --where={{ install_dir }} --python={{ py_exe }} --config=config {{ extra_opts }}
     - cwd: {{ construct_setup }}
 {% else %}
   cmd.run:
-    - name: install.py --where={{ install_dir }} --python={{ py_exe }} {{ extra_opts }} --ignore-prompts
+    - name: install.py  --ignore-prompts --where={{ install_dir }} --python={{ py_exe }} --config=config {{ extra_opts }}
     - cwd: {{ construct_setup }}
 {% endif %}
-
-
-Remove construct_setup:
-  file.absent:
-    - name: {{ construct_setup }}
