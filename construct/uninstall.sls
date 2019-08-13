@@ -12,7 +12,6 @@ Uninstall Construct:
       - REG delete "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /F /V CONSTRUCT_LATEST
   win_path.absent:
     - name: {{ install_dir }}
-    - index: 0
   module.run:
     - name: win_path.rehash
 {% endif %}
