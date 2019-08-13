@@ -8,7 +8,7 @@
 {% set construct_setup = salt.temp.dir() %}
 {% set extra_opts = "" %}
 {% if version != -1 %}
-  {% set extra_opts = '--version=version' %}
+  {% set extra_opts = '--version=' + version %}
 {% endif %}
 
 
