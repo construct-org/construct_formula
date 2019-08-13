@@ -19,7 +19,6 @@ Download construct_setup:
 Install construct:
 {% if grains['os'] == 'Windows' %}
   cmd.run:
-  cmd.run:
     - names:
       - python install.py  --ignore-prompts --where={{ install_dir }} --python={{ py_exe }} --config=config {{ extra_opts }}
       - SETX /M CONSTRUCT_CONFIG "{{ config }}"
