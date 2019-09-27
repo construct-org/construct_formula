@@ -20,22 +20,27 @@ Download construct_setup:
 Ensure Python Installed:
   pkg.installed:
     - name: python2_x64
+
+'C:\Python27':
   win_path.exists:
-    - name: 'C:\Python27'
     - index: 0
+
+'C:\Python27\Scripts':
   win_path.exists:
-    - name: 'C:\Python27\Scripts'
     - index: 0
 
 Ensure Git Installed:
   pkg.installed:
     - name: git
+
+'C:\Program Files\Git\bin':
   win_path.exists:
-    - name: 'C:\Program Files\Git\bin'
     - index: 0
+
+'C:\Program Files\Git':
   win_path.exists:
-    - name: 'C:\Program Files\Git'
     - index: 0
+
 {% endif %}
 
 Install construct:
