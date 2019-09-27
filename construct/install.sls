@@ -24,12 +24,12 @@ Ensure Python Installed:
 
 Ensure Pip installed:
   file.managed:
-    - name: "%TMP%/get-pip.py"
+    - name: 'C:\tmp\get-pip.py'
     - source: https://bootstrap.pypa.io/get-pip.py
     - source_hash: 6f489c199cb5be8a4b84c6bd7ad6e051
   cmd.run:
     - name:
-      - "{{ py_exe }} %TMP%/get-pip.py"
+      - '{{ py_exe }} C:\tmp\get-pip.py'
 
 'C:\Python27':
   win_path.exists:
