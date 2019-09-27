@@ -16,11 +16,33 @@ Download construct_setup:
   cmd.run:
     - name: git clone {{ git_repo }} {{ construct_setup }}
 
+{% if grains['os'] == 'Windows' %}
+Ensure Python Installed:
+  pkg.installed:
+    - name: python2_x64
+  win_path.exists:
+    - name: 'C:\Python27'
+    - index: 0
+  win_path.exists:
+    - name: 'C:\Python27\Scripts'
+    - index: 0
+
+Ensure Git Installed:
+  pkg.installed:
+    - name: git
+  win_path.exists:
+    - name: 'C:\Program Files\Git\bin'
+    - index: 0
+  win_path.exists:
+    - name: 'C:\Program Files\Git'
+    - index: 0
+{% endif %}
+
 Install construct:
 {% if grains['os'] == 'Windows' %}
   cmd.run:
     - names:
-      - python install.py  --ignore-prompts --where={{ install_dir }} --python={{ py_exe }} --config=config {{ extra_opts }}
+      - {{ py_exe }} install.py  --ignore-prompts --where={{ install_dir }} --python={{ py_exe }} --config=config {{ extra_opts }}
       - SETX /M CONSTRUCT_CONFIG "{{ config }}"
     - cwd: {{ construct_setup }}
   win_path.exists:

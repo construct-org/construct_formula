@@ -2,6 +2,10 @@
 Construct formula
 =================
 
+0.2.0 (2019-09-27)
+
+- Ensure python and git are installed on windows
+
 0.1.0 (2019-08-13)
 
 - Add uninstall.sls
