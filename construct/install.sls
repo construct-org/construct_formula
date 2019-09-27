@@ -22,6 +22,10 @@ Ensure Python Installed:
   pkg.installed:
     - name: python2_x64
 
+Create tmp folder:
+  file.directory:
+    - name: 'C:\tmp'
+
 Ensure Pip installed:
   file.managed:
     - name: 'C:\tmp\get-pip.py'
