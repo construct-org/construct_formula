@@ -5,6 +5,7 @@
 {% set config = construct.config %}
 {% set version = construct.version %}
 {% set git_repo = construct.git_repo %}
+{% set git_exe = construct.git_exe %}
 {% set construct_setup = salt.temp.dir() %}
 {% set extra_opts = "" %}
 {% if version != -1 %}
@@ -40,6 +41,12 @@ Ensure Git Installed:
 'C:\Program Files\Git':
   win_path.exists:
     - index: 0
+  module.run:
+    - name: win_path.rehash
+
+Refresh Environ:
+  module.run:
+    - name: win_path.rehash
 
 {% endif %}
 
