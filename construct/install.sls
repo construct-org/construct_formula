@@ -17,50 +17,6 @@ Download construct_setup:
   cmd.run:
     - name: git clone {{ git_repo }} {{ construct_setup }}
 
-{% if grains['os'] == 'Windows' %}
-Ensure Python Installed:
-  pkg.installed:
-    - name: python2_x64
-
-Create tmp folder:
-  file.directory:
-    - name: 'C:\tmp'
-
-Ensure Pip installed:
-  file.managed:
-    - name: 'C:\tmp\get-pip.py'
-    - source: https://bootstrap.pypa.io/get-pip.py
-    - source_hash: 6f489c199cb5be8a4b84c6bd7ad6e051
-  cmd.run:
-    - name: '{{ py_exe }} C:\tmp\get-pip.py'
-
-'C:\Python27':
-  win_path.exists:
-    - index: 0
-
-'C:\Python27\Scripts':
-  win_path.exists:
-    - index: 0
-
-Ensure Git Installed:
-  pkg.installed:
-    - name: git
-
-'C:\Program Files\Git\bin':
-  win_path.exists:
-    - index: 0
-
-'C:\Program Files\Git':
-  win_path.exists:
-    - index: 0
-  module.run:
-    - name: win_path.rehash
-
-Refresh Environ:
-  module.run:
-    - name: win_path.rehash
-
-{% endif %}
 
 Install construct:
 {% if grains['os'] == 'Windows' %}
